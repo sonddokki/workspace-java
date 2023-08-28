@@ -229,3 +229,6 @@ java.io.IOException: 지정된 경로를 찾을 수 없습니다
 	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1152)
 	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.ui 4 10001 2023-08-28 13:04:29.392
+!MESSAGE Failed to create image directory C:\javaStudy\workspace-java\.metadata\.plugins\org.eclipse.jdt.ui\jdt-images
