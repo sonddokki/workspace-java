@@ -24,6 +24,7 @@ public interface Calc {
 		return total;
 	}
 	
+	
 	private void myMethod() {
 		System.out.println("private 메서드 호출");
 	}

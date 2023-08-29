@@ -7,13 +7,9 @@ public class Triangle extends Shape {
 	private int side02;
 	private int side03;
 
-	// 생성자
-	public Triangle(int s1, int s2, int s3, String fill, String line) {
-		this.side01 = s1;
-		this.side02 = s2;
-		this.side03 = s3;
-		this.fillColor = fill;
-		this.lineColor = line;
+	// 생성자 오버로딩
+	public Triangle() {
+		super();
 	}
 	
 	// 메서드
