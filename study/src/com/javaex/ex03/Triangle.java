@@ -12,6 +12,27 @@ public class Triangle extends Shape {
 		super();
 	}
 	
+	
+	public Triangle(int side01, int side02, int side03, String fill, String line) {
+//		super();
+//		this.side01 = side01;
+//		this.side02 = side02;
+//		this.side03 = side03;
+		
+//		부모의 메소드를 쓸때는 슈퍼
+//		super.setFillColor("빨강");
+//		super.setLineColor("빨강");
+		
+		super(fill, line);
+		this.side01 = side01;
+		this.side02 = side02;
+		this.side03 = side03;
+	
+	}
+	
+	
+	
+	
 	// 메서드
 
 	public int getSide01() {
@@ -42,11 +63,11 @@ public class Triangle extends Shape {
 	
 	public void draw() {
 		System.out.println("======= 삼각형을 생성했습니다 =======");
-		System.out.println("첫번째 변의 길이: " + side01);
-		System.out.println("두번째 변의 길이: " + side02);
-		System.out.println("세번째 변의 길이: " + side03);
+		System.out.println("첫번째 변의 길이: " + this.side01);
+		System.out.println("두번째 변의 길이: " + this.side02);
+		System.out.println("세번째 변의 길이: " + this.side03);
 		System.out.println("면색: " + fillColor);
-		System.out.println("선색: " + lineColor);
+		System.out.println("선색: " + super.getLineColor());
 		System.out.println();
 	}
 	

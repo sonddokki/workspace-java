@@ -6,10 +6,11 @@ public class Circle extends Shape {
 	private int radius;
 
 	// 생성자
+	public Circle() {}
+	
 	public Circle(int radius, String fill, String line) {
+		super(fill, line);
 		this.radius = radius;
-		this.fillColor = fill;
-		this.lineColor = line;
 	}
 
 	// 메서드 g,s
@@ -26,7 +27,7 @@ public class Circle extends Shape {
 		System.out.println("======= 원을 생성했습니다 =======");
 		System.out.println("반지름: " + radius);
 		System.out.println("면색: " + fillColor);
-		System.out.println("선색: " + lineColor);
+		System.out.println("선색: " + super.getLineColor());
 		System.out.println();
 	}
 	

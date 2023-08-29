@@ -7,11 +7,14 @@ public class Rectangle extends Shape {
 	private int height;
 
 	// 생성자
+	public Rectangle() { 
+		super();
+	}  
+	
 	public Rectangle(int width, int height, String fillColor, String lineColor) {   // 메모리 올리기
+		super(fillColor, lineColor);
 		this.width = width;
 		this.height = height;
-		this.fillColor = fillColor;
-		this.lineColor = lineColor;		
 	}  
 
 	public int getWidth() {
@@ -38,7 +41,7 @@ public class Rectangle extends Shape {
 		System.out.println("가로: " + width);
 		System.out.println("세로: " + height);
 		System.out.println("면색: " + fillColor);
-		System.out.println("선색: " + lineColor);
+		System.out.println("선색: " + super.getLineColor());
 		System.out.println();
 	}
 }

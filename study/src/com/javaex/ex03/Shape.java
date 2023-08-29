@@ -3,8 +3,8 @@ package com.javaex.ex03;
 public class Shape {
 	
 		// 필드
-		protected String fillColor;
-		protected String lineColor;
+		protected String fillColor;  // 상속받은 클래스에는 접근 허용
+		private String lineColor;
 
 		// 생성자
 		public Shape() {}
