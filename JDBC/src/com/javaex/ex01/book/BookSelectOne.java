@@ -92,6 +92,14 @@ public class BookSelectOne {
 
 		}
 		
+		int i = 0;  //  첫번째 책 정보 출력
+		
+		System.out.println( " bookId: " + bookList.get(i).getBookId()
+						   + " title: " + bookList.get(i).getTitle()
+						   + " pubs: " + bookList.get(i).getPubs()
+						   + " pubDate: " + bookList.get(i).getPubDate()
+						   + " authorId: " + bookList.get(i).getAuthorId()
+						   + " authorName: " + bookList.get(i).getAuthorName());
 		
 		
 
