@@ -6,6 +6,7 @@ public class MainApp {
 		
 		Point p01 = new Point(20, 10);
 		
+	
 		p01.draw();
 		
 
