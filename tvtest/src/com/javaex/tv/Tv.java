@@ -15,12 +15,14 @@ public class Tv {
 	
 	// 2. 매개변수가 있는 생성자
 	// [접근제어자] [클래스이름] (매개변수) {}
-	public Tv(int ch, int vo, boolean po) {
-		this.channel = ch;
-		this.volume = vo;
-		this.power = po;
+	public Tv(int channel, int volume, boolean power) {
+		this.channel = channel;
+		this.volume = volume;
+		this.power = power;
 	}
 
+	
+	// 메소드 gs
 	// [접근제어자] [타입변수] [생성자이름] (매개변수) {}
 	public int getChannel() {
 		return channel;
@@ -29,38 +31,53 @@ public class Tv {
 	public int getVolume() {
 		return volume;
 	}
-
-	public boolean Power(boolean power) {
-		return this.power = power;
-	} 
+	
 //===============================================
-	public int channel(int channel) {
-		return this.channel = channel;
-		
-	}
-
-	public boolean channelUp(boolean b) {
-		return this.channelUp(b);
-	}
 	
-	public int volume(int volume) {
-		return this.volume = volume;
-		
-	}
-
-	public void volumeUp(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	// 메서드 - 기능
+	// 메소드 일반
 	// 1. [접근제어자] 반환타입 메서드이름(매개변수) {}
 	// 2. [접근제어자] 반환타입 메서드이름() {}
 	// 3. [접근제어자] 반환타입 메서드이름(매개변수) {리턴}
 	// 4. [접근제어자] 반환타입 메서드이름() {리턴}
 	
+	public void Power(boolean on) {
+		this.power = on;
+	} 
+	
+	public void channel(int channel) {
+		if (channel < 1) {
+			this.channel = 255;
+		} else if (channel > 255) {
+			this.channel = 1;
+		}
+		
+	}
 
+	public void channel(boolean up) {
+		if (up == true) {
+			channel += 1;
+		} else if (up == false) {
+			channel -= 1;
+		}
+		
+	}
+	
+	public void volume(int volume) {
+		if (volume < 0) {
+			this.volume = 0;
+		} else if (volume > 100) {
+			this.volume = 100;
+		} 
+	}
+
+	public void volume(boolean up) {
+		if (up == true) {
+			this.volume += 1;
+		} else if (up == false) {
+			this.volume -= 1;
+		}
+	}
+	
 	// 2. [접근제어자] 반환타입 메서드이름() {}
 	public void status() {
 		System.out.println("TV의 현재 상태 : " + power);
