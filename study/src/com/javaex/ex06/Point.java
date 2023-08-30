@@ -29,16 +29,13 @@ public class Point {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
-
-	public void draw() {
-		System.out.println("======= 점을 생성했습니다 =======");
-		System.out.println("x축의 위치: " + this.x);
-		System.out.println("Y축의 위치: " + this.y);
-		System.out.println();
+     
+	// 부모(Object)의 toString을 재정의 해줘야 사용가능
+	@Override
+	public String toString() {
+		return "Point [x=" + x + ", y=" + y + "]";
 	}
+	
 
-	
-	
 
 }
