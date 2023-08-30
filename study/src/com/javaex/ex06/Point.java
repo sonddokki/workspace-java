@@ -30,14 +30,14 @@ public class Point {
 		this.y = y;
 	}
 	
-	
+
 	public void draw() {
 		System.out.println("======= 점을 생성했습니다 =======");
 		System.out.println("x축의 위치: " + this.x);
 		System.out.println("Y축의 위치: " + this.y);
 		System.out.println();
 	}
-	
+
 	
 	
 
