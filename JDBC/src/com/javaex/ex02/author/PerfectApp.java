@@ -3,7 +3,7 @@ package com.javaex.ex02.author;
 import java.util.List;
 import java.util.Scanner;
 
-public class MainApp2 {
+public class PerfectApp {
 
 	public static void main(String[] args) {
 		
