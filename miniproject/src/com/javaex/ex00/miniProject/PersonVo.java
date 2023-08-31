@@ -10,6 +10,7 @@ public class PersonVo {
 	private String company;
 
 	// 생성자
+	public PersonVo() {}
 
 	public PersonVo(int personId, String name, String hp, String company) {
 		this.personId = personId;
