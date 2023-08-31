@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class BookUpdete {
+public class BookUpdate {
 
 	public static void main(String[] args) {
 
