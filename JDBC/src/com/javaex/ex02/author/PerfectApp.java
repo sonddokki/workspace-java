@@ -14,6 +14,7 @@ public class PerfectApp {
 			System.out.println("==============================================");
 			System.out.println();
 			
+			
 			AuthorDao authorDao = new AuthorDao();
 			List<AuthorVo> authorList = authorDao.authorSelect();
 			Scanner sr = new Scanner(System.in);
@@ -23,7 +24,7 @@ public class PerfectApp {
 			
 			String authorName;
 			String authorDesc;
-			
+		
 		
 			switch (num) {
 			
