@@ -40,7 +40,6 @@ public class BookSelect {
 			query += "          ,b.pub_date ";
 			query += "          ,b.author_id ";
 			query += "          ,a.author_name ";
-			query += "          ,b.author_id ";
 			query += " FROM book b, author a ";	
 			query += " WHERE b.author_id = a.author_id ";			
 			System.out.println(query);

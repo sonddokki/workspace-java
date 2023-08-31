@@ -22,8 +22,6 @@ public class AuthorDao {
 	private String pw = "webdb";
 
 	// 생성자
-	public AuthorDao() {
-	}
 
 	// 메소드-gs
 
