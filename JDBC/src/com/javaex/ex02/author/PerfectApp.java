@@ -23,6 +23,7 @@ public class PerfectApp {
 			
 			String authorName;
 			String authorDesc;
+			
 		
 			switch (num) {
 			
