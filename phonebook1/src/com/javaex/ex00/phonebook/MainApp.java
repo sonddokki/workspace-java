@@ -1,4 +1,4 @@
-package com.javaex.ex00.miniProject;
+package com.javaex.ex00.phonebook;
 
 import java.util.List;
 

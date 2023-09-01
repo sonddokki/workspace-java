@@ -1,4 +1,4 @@
-package com.javaex.ex00.miniProject;
+package com.javaex.ex00.phonebook;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -58,6 +58,17 @@ public class PersonDao {
 			System.out.println("error:" + e);
 		}
 	}
+	
+	public void consol() {
+		System.out.println("*************************************");	
+		System.out.println("*       전화번호 관리 프로그램      *");	
+		System.out.println("*************************************");	
+		System.out.println();
+		System.out.println("1.리스트 2.등록 3.삭제 4.검색 5.종료");
+		System.out.println("-------------------------------------");	
+		System.out.print(">메뉴번호: ");
+	}
+	
 
 	// (2) 전화번호등록 메소드
 	public int personInsert(String name, String ph, String company) {
@@ -190,5 +201,7 @@ public class PersonDao {
 		this.close();
 		return personList;
 	}
+
+
 
 }
