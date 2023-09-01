@@ -7,7 +7,6 @@ public class MainApp {
 
 	public static void main(String[] args) {
 
-		
 		PersonDao personDao = new PersonDao();
 		Scanner scanner = new Scanner(System.in);
 
@@ -17,6 +16,7 @@ public class MainApp {
 		System.out.println("***********************************************");
 
 		while (true) {
+			
 			personDao.consol();
 
 			String sNum = scanner.next();
@@ -46,10 +46,11 @@ public class MainApp {
 			}
 			case "3": {
 				System.out.println("<3.삭제>");
-				System.out.print(">번호: ");
-				int personId = scanner.nextInt();
+				System.out.println("[삭제할 person_id를 입력하시오.]");
+				System.out.print(">ID: ");
+				scanner.nextLine();
+				String personId = scanner.nextLine();
 				personDao.personDelete(personId);
-				System.out.println("[삭제되었습니다.]");
 				break;
 			}
 			case "4": {

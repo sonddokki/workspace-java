@@ -85,7 +85,8 @@ public class PersonDao {
 	}
 
 	// (3) 전화번호삭제 메소드
-	public void personDelete(int personId) {
+	public void personDelete(String personId) {
+		int count = -1;
 		this.getConnect();
 		try {
 			String query = "";
@@ -93,13 +94,16 @@ public class PersonDao {
 			query += " WHERE person_id = ? ";
 			// (2) 바인딩 (값을 쿼리문문자열 안에 매칭시키기)
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, personId);
+			pstmt.setString(1, personId);
 			// 실행
-			pstmt.executeUpdate();
+			count = pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("error:" + e);
+			System.out.println("[다시 입력해주세요.]");
 		}
 		this.close();
+		if (count == 1) {
+			System.out.println("[삭제되었습니다.]");
+		}
 	}
 
 	// (4) 전화번호검색 메소드
