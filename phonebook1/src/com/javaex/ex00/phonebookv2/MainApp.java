@@ -1,4 +1,4 @@
-package com.javaex.ex00.phonebook;
+package com.javaex.ex00.phonebookv2;
 
 import java.util.List;
 import java.util.Scanner;
@@ -7,6 +7,7 @@ public class MainApp {
 
 	public static void main(String[] args) {
 
+		boolean run = true;
 		PersonDao personDao = new PersonDao();
 		Scanner scanner = new Scanner(System.in);
 
@@ -15,7 +16,7 @@ public class MainApp {
 		System.out.println("*            전화번호 관리 프로그램           *");
 		System.out.println("***********************************************");
 
-		while (true) {
+		while (run) {
 			
 			personDao.consol();
 
@@ -112,17 +113,20 @@ public class MainApp {
 				break;
 			}
 			case "6": {  // 종료
-				System.out.println();
-				System.out.println("***********************************************");
-				System.out.println("*                감 사 합 니 다               *");
-				System.out.println("***********************************************");
-				return;
+				run = false;
+				break;
 			}
 			default:
 				System.out.println("[다시 입력해 주세요.]");
 				break;
-			}	
+			}
+			
 		}
+		scanner.close();
+		System.out.println();
+		System.out.println("***********************************************");
+		System.out.println("*                감 사 합 니 다               *");
+		System.out.println("***********************************************");
 
 	}
 
