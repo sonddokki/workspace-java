@@ -27,8 +27,7 @@ public class PersonDao {
 	// 메소드-일반
 
 	// (1) 공통사항 빼놓기
-	private void getConnect() {
-
+	private void getConnect() {  // DB 연결
 		try {
 			// 1. JDBC 드라이버 (Oracle) 로딩
 			Class.forName(driver);
@@ -39,11 +38,9 @@ public class PersonDao {
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		}
-
 	}
 
-	private void close() {
-		// 5. 자원정리
+	private void close() { // 자원정리
 		try {
 			if (rs != null) {
 				rs.close();
@@ -59,7 +56,7 @@ public class PersonDao {
 		}
 	}
 	
-	public void consol() {
+	public void consol() {  // 콘솔출력
 		System.out.println();
 		System.out.println("  1.리스트 2.등록 3.삭제 4.검색 5.수정 6.종료");
 		System.out.println("-----------------------------------------------");	
@@ -67,9 +64,8 @@ public class PersonDao {
 	}
 
 	// (2) 전화번호등록 메소드
-	public int personInsert(String name, String ph, String company) {
+	public void personInsert(String name, String ph, String company) {
 		this.getConnect();
-		int count = -1;
 		try {
 			// (1) SQL문 준비
 			String query = "";
@@ -81,43 +77,38 @@ public class PersonDao {
 			pstmt.setString(2, ph);
 			pstmt.setString(3, company);
 			// (3) 실행
-			count = pstmt.executeUpdate();
+			pstmt.executeUpdate();  // 실행
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		}
 		this.close();
-		return count;
 	}
 
 	// (3) 전화번호삭제 메소드
-	public int personDelete(int personId) {
-		int count = -1;
+	public void personDelete(int personId) {
 		this.getConnect();
-
 		try {
 			String query = "";
 			query += " DELETE FROM person ";
 			query += " WHERE person_id = ? ";
-
 			// (2) 바인딩 (값을 쿼리문문자열 안에 매칭시키기)
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, personId);
-
-			count = pstmt.executeUpdate();
+			// 실행
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		}
 		this.close();
-		return count;
 	}
 
 	// (4) 전화번호검색 메소드
 	public List<PersonVo> personSearch(String search) {
-//		int count = -1;
-		List<PersonVo> personList = new ArrayList<PersonVo>(); // 리스트 생성
-
+		 // 리스트 생성
+		List<PersonVo> personList = new ArrayList<PersonVo>();
+		// db 연결
 		this.getConnect();
-
+		// 쿼리문 작성
 		try {
 			String query = "";
 			query += " SELECT  person_id ";
@@ -126,40 +117,37 @@ public class PersonDao {
 			query += "         ,company ";
 			query += " FROM person ";
 			query += " where name like '%'||?||'%'  ";
-
+			// 쿼리문에 변수 대입
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, search);
-
-//			count = pstmt.executeUpdate();
-
+			// 쿼리문 DB에 실행
 			rs = pstmt.executeQuery();
-
-			while (rs.next()) { // 값의 수를 모르기 무한 반복문 while 사용
+			// 나온 값을 타이틀 밑 순서부터 반복해서 personVo 객체에 저장
+			while (rs.next()) { 
 				int personId = rs.getInt(1);
 				String Name = rs.getString(2);
 				String hp = rs.getString(3);
 				String company = rs.getString(4);
 
-				PersonVo personVo = new PersonVo(); // 사람 객체 생성
+				PersonVo personVo = new PersonVo();
 				personVo.setPersonId(personId);
 				personVo.setName(Name);
 				personVo.setHp(hp);
 				personVo.setCompany(company);
-
-				personList.add(personVo); // 리스트에 넣기
+				 // 리스트에 넣기
+				personList.add(personVo);
 			}
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		}
 		this.close();
-
+		// 리스트 리턴
 		return personList;
-	}// personSelect
+	}// personSearch
 
 	// (5) 전화번호리스트 메소드
 	public List<PersonVo> personSelect() {
-
-		List<PersonVo> personList = new ArrayList<PersonVo>(); // 리스트 생성
+		List<PersonVo> personList = new ArrayList<PersonVo>();
 		this.getConnect();
 		try {
 			String query = "";
@@ -170,22 +158,21 @@ public class PersonDao {
 			query += " FROM person ";
 
 			pstmt = conn.prepareStatement(query);
-
 			rs = pstmt.executeQuery();
 
-			while (rs.next()) { // 값의 수를 모르기 무한 반복문 while 사용
+			while (rs.next()) { 
 				int personId = rs.getInt(1);
 				String Name = rs.getString(2);
 				String hp = rs.getString(3);
 				String company = rs.getString(4);
 
-				PersonVo personVo = new PersonVo(); // 사람 객체 생성
+				PersonVo personVo = new PersonVo();
 				personVo.setPersonId(personId);
 				personVo.setName(Name);
 				personVo.setHp(hp);
 				personVo.setCompany(company);
 
-				personList.add(personVo); // 리스트에 넣기
+				personList.add(personVo);
 			}
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
@@ -222,7 +209,6 @@ public class PersonDao {
 		}
 		this.close();	
 		return personVo;
-			
 	}
 	
 	// (7) 이름수정 메소드
