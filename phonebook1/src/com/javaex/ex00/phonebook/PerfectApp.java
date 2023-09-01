@@ -22,7 +22,7 @@ public class PerfectApp {
 
 			switch (sNum) {
 
-			case 1: {
+			case 1: {  
 				List<PersonVo> personList = personDao.personSelect();
 				System.out.println("<1.리스트>");
 				for (int i = 0; i < personList.size(); i++) {
@@ -59,7 +59,9 @@ public class PerfectApp {
 				List<PersonVo> personList = personDao.personSearch(search);
 				for (int i = 0; i < personList.size(); i++) {
 					System.out.println(personList.get(i).toString());
+					count ++;
 				}
+				System.out.println(">검색결과: "+ count + "건");
 				break;
 			}
 			case 5: {

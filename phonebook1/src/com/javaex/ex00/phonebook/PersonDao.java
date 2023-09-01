@@ -168,7 +168,7 @@ public class PersonDao {
 		this.getConnect();
 		try {
 			String query = "";
-			query += " SELECT  person_id ";
+			query += " SELECT  lpad(person_id, 2, '0' ) ";
 			query += "         ,name ";
 			query += "         ,hp ";
 			query += "         ,company ";
@@ -199,6 +199,10 @@ public class PersonDao {
 		return personList;
 	}
 
+	// (6) 전화번호수정 메소드
+	public void personUpdate(String name, String ph, String company) {
+		
+	}
 
-
+	
 }

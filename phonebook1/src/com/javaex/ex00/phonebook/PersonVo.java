@@ -56,7 +56,7 @@ public class PersonVo {
 	// 메소드-일반
 	@Override
 	public String toString() {
-		return personId + ".  " + name + "  " + hp + "  " + company;
+		return personId + ".\t" + name + "\t" + hp + "\t" + company;
 	}
 	
 	
