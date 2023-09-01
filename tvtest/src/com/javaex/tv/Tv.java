@@ -21,7 +21,6 @@ public class Tv {
 		this.power = power;
 	}
 
-	
 	// 메소드 gs
 	// [접근제어자] [타입변수] [생성자이름] (매개변수) {}
 	public int getChannel() {
