@@ -22,19 +22,19 @@ public class MainTest {
 
 		// 검색
 
-		List<PersonVo> personList = personDao.personSearch("새");
-		for (int i = 0; i < personList.size(); i++) {
-			System.out.println("-----------------------------------------------");
-			System.out.println(personList.get(i).toString());
-		}
+//		List<PersonVo> personList = personDao.personSearch("새");
+//		for (int i = 0; i < personList.size(); i++) {
+//			System.out.println("-----------------------------------------------");
+//			System.out.println(personList.get(i).toString());
+//		}
 
 		// 리스트
 
-		List<PersonVo> personList2 = personDao.personSelect();
-		for (int i = 0; i < personList2.size(); i++) {
-			System.out.println("-----------------------------------------------");
-			System.out.println(personList2.get(i).toString());
-		}
+//		List<PersonVo> personList2 = personDao.personSelect();
+//		for (int i = 0; i < personList2.size(); i++) {
+//			System.out.println("-----------------------------------------------");
+//			System.out.println(personList2.get(i).toString());
+//		}
 
 	}
 

@@ -25,7 +25,7 @@ public class MainApp {
 			switch (sNum) {
 
 			case "1": {
-				List<PersonVo> personList = personDao.personSelect();
+				List<PersonVo> personList = personDao.personSelect("");
 				System.out.println("<1.리스트>");
 				for (int i = 0; i < personList.size(); i++) {
 					System.out.println(personList.get(i).toString());
@@ -60,7 +60,7 @@ public class MainApp {
 				System.out.print(">이름: ");
 				scanner.nextLine();
 				String search = scanner.nextLine();
-				List<PersonVo> personList = personDao.personSearch(search);
+				List<PersonVo> personList = personDao.personSelect(search);
 				for (int i = 0; i < personList.size(); i++) {
 					System.out.println(personList.get(i).toString());
 					count++;
@@ -72,20 +72,23 @@ public class MainApp {
 				System.out.println("<5.수정>");				
 				System.out.println("[수정할 person_id를 입력하시오.]");
 				System.out.print(">ID: ");
-				int personId = scanner.nextInt();
-				personDao.personSelectOne(personId);
 				scanner.nextLine();
+				String personId = scanner.nextLine();
+				List<PersonVo> personList = personDao.personSelect(personId);
+				for (int i = 0; i < personList.size(); i++) {
+					System.out.println(personList.get(i).toString());
+				}
 				System.out.println("[어떤 항목을 수정하시겠습니까?]");
 				System.out.println(" 1.이름    2.개인번호    3.회사번호 ");
 				System.out.print(">번호: ");
 				String updateNum = scanner.nextLine();
-
+			
 				switch (updateNum) {
 				case "1": {
 					System.out.println("[새 이름을 입력하십시오.]");
 					System.out.print(">새 이름: ");
 					String name = scanner.nextLine();
-					personDao.personNameUpdate(personId, name);
+					personDao.personUpdate(personId, updateNum, name);
 					System.out.println("[ID'" + personId + "'님의 이름이 '" + name + "'으로 변경되었습니다.]");
 					break;
 				}
@@ -93,7 +96,7 @@ public class MainApp {
 					System.out.println("[새 개인번호를 입력하십시오.]");
 					System.out.print(">새 개인번호: ");
 					String hp = scanner.nextLine();
-					personDao.personHpUpdate(personId, hp);
+					personDao.personUpdate(personId, updateNum, hp);
 					System.out.println("[ID'" + personId + "'님의 개인번호가 '" + hp + "'으로 변경되었습니다.]");
 					break;
 				}
@@ -101,7 +104,7 @@ public class MainApp {
 					System.out.println("[새 회사번호를 입력하십시오.]");
 					System.out.print(">새 회사번호: ");
 					String company = scanner.nextLine();
-					personDao.personCompanyUpdate(personId, company);
+					personDao.personUpdate(personId, updateNum, company);
 					System.out.println("[ID'" + personId + "'님의 회사번호가 '" + company + "'으로 변경되었습니다.]");
 					break;
 				}
