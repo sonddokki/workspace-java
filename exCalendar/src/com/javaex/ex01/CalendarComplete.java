@@ -3,6 +3,7 @@ package com.javaex.ex01;
 import java.util.Scanner;
 
 public class CalendarComplete {
+	
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("연도를 입력하시오 : ");
