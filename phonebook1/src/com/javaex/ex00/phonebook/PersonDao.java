@@ -60,9 +60,6 @@ public class PersonDao {
 	}
 	
 	public void consol() {
-		System.out.println("*************************************");	
-		System.out.println("*       전화번호 관리 프로그램      *");	
-		System.out.println("*************************************");	
 		System.out.println();
 		System.out.println("1.리스트 2.등록 3.삭제 4.검색 5.종료");
 		System.out.println("-------------------------------------");	
