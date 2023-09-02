@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonDao {
+public class PersonDaoBackUp {
 	// 필드
 	// 0. import java.sql.*;
 	private Connection conn = null;
@@ -107,10 +107,8 @@ public class PersonDao {
 		}
 	}
 
-	// (4) 전화번호검색 메소드  
-	// '리스트','검색','수정전 회원확인' 총 3가지 항목에서 사용
-	//  ==> Select + Search 통합
-	public List<PersonVo> personSelect(String keyword) { 
+	// (4) 전화번호검색 메소드
+	public List<PersonVo> personSelect(String keyword) { // Select + Search 통합
 		// 리스트 생성
 		List<PersonVo> personList = new ArrayList<PersonVo>();
 		// db 연결
@@ -123,11 +121,11 @@ public class PersonDao {
 			query += "         ,hp ";
 			query += "         ,company ";
 			query += " FROM person ";
+			// keyword에 ""가 아닌 값이 들어오면 해당 쿼리문도 붙여서 실행
 			
-			// keyword에 ""가 아닌 값이 들어오면 해당 쿼리문도 붙여서 실행			
-			if (!keyword.equals("")) {  
+			if (!keyword.equals("")) {
 				try {
-					Integer.parseInt(keyword); 
+					Integer.parseInt(keyword);
 					key = true;
 				} catch (NumberFormatException ex) {
 					key = false;
@@ -184,34 +182,64 @@ public class PersonDao {
 		return personList;
 	}// personSelect + Search
 
-	// (5) 수정통합 메소드      (바꾸고싶은회원ID,  바꿀항목선택번호,   바꿀내용)
+	// (5) 전화번호수정전 확인출력 메소드
+//	public PersonVo personSelectOne(int Id) {
+//		PersonVo personVo = new PersonVo(); // 사람 객체 생성
+//		this.getConnect();
+//		try {
+//			// (1) SQL문 준비
+//			String query = "";
+//			query += " SELECT  person_id ";
+//			query += "         ,name ";
+//			query += "         ,hp ";
+//			query += "         ,company ";
+//			query += " FROM person ";
+//			query += " where person_id = ? ";
+//			pstmt = conn.prepareStatement(query);
+//			pstmt.setInt(1, Id);
+//			// (3) 실행
+//			rs = pstmt.executeQuery();
+//			rs.next();
+//			personVo.setPersonId(rs.getInt(1));
+//			personVo.setName(rs.getString(2));
+//			personVo.setHp(rs.getString(3));
+//			personVo.setCompany(rs.getString(4));
+//			System.out.println(personVo.toString());
+//		} catch (SQLException e) {
+//			System.out.println("error:" + e);
+//		}
+//		this.close();
+//		return personVo;
+//	}
+
+	// (6) 수정통합 메소드
 	public void personUpdate(String personId, String updateNum, String keyword) {
 		this.getConnect();
-		// 문자열을 정수로 바꿔주는 기능 ( 문자입력시 에러가 떳던 값들은 문자로 받아서 정수로 변환 )
-		int keyId = Integer.parseInt(personId);   
-		int keyNum = Integer.parseInt(updateNum); 
+		int key = Integer.parseInt(updateNum); // 문자열을 정수로 바꿔주는 기능
+
+		int key2 = Integer.parseInt(personId);
+		System.out.println(key);
 		try {
 			// (1) SQL문 준비
 			String query = "";
 			query += " UPDATE person ";
-			// 일치하는 항목의 쿼리문만 삽입
-			if (keyNum == 1) {
+			System.out.println(key);
+			if (key == 1) {
 				query += " set name = ? ";
 			} else
-			if (keyNum == 2) {
+			if (key == 2) {
 				query += " set hp = ? ";
 			} else
-			if (keyNum == 3) {
+			if (key == 3) {
 				query += " set company = ? ";
 			}
 			query += " where person_id = ? ";
 			// (2) 바인딩 (값을 쿼리문문자열 안에 매칭시키기)
 			pstmt = conn.prepareStatement(query);
 			
-			// 바꿀내용을 set에 대입
+			System.out.println(query);
 			pstmt.setString(1, keyword);
-			// 찾을 회원의 번호를 where person_id에 대입
-			pstmt.setInt(2, keyId);
+			pstmt.setInt(2, key2);
 			// (3) 실행
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -220,5 +248,46 @@ public class PersonDao {
 		this.close();
 	}
 
+//	// (7) 개인전화번호수정 메소드
+//	public void personHpUpdate(int personId, String hp) {
+//		this.getConnect();
+//		try {
+//			// (1) SQL문 준비
+//			String query = "";
+//			query += " UPDATE person ";
+//			query += " set hp = ? ";
+//			query += " where person_id = ? ";
+//			// (2) 바인딩 (값을 쿼리문문자열 안에 매칭시키기)
+//			pstmt = conn.prepareStatement(query);
+//			pstmt.setString(1, hp);
+//			pstmt.setInt(2, personId);
+//			// (3) 실행
+//			pstmt.executeUpdate();
+//		} catch (SQLException e) {
+//			System.out.println("error:" + e);
+//		}
+//		this.close();
+//	}
+//
+//	// (8) 회사전화번호수정 메소드
+//	public void personCompanyUpdate(int personId, String company) {
+//		this.getConnect();
+//		try {
+//			// (1) SQL문 준비
+//			String query = "";
+//			query += " UPDATE person ";
+//			query += " set company = ? ";
+//			query += " where person_id = ? ";
+//			// (2) 바인딩 (값을 쿼리문문자열 안에 매칭시키기)
+//			pstmt = conn.prepareStatement(query);
+//			pstmt.setString(1, company);
+//			pstmt.setInt(2, personId);
+//			// (3) 실행
+//			pstmt.executeUpdate();
+//		} catch (SQLException e) {
+//			System.out.println("error:" + e);
+//		}
+//		this.close();
+//	}
 
 }

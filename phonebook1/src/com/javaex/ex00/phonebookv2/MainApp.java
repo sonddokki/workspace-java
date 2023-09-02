@@ -7,24 +7,27 @@ public class MainApp {
 
 	public static void main(String[] args) {
 
-		boolean run = true;
-		PersonDao personDao = new PersonDao();
-		Scanner scanner = new Scanner(System.in);
+		// 필요한 변수선언
+		boolean run = true;  // while문 끝내기용
+		PersonDao personDao = new PersonDao();  // DB연결 메소드 사용할 수 있는 객체 생성
+		Scanner scanner = new Scanner(System.in);  // 값입력 장치 생성
 
 		System.out.println();
 		System.out.println("***********************************************");
 		System.out.println("*            전화번호 관리 프로그램           *");
 		System.out.println("***********************************************");
 
-		while (run) {
+		while (run) {  // 반복문 실행
 			
-			personDao.consol();
+			personDao.consol(); // 선택항목출력 메소드
 
-			String sNum = scanner.next();
+			String sNum = scanner.next();  // 선택항목 번호 입력
+			// 정해진 숫자외 입력시만 '다시입력해주세요 문구'출력이 됨 (문자입력시 에러)
+			// ==> 해결 nextInt(); 가 아닌 scanner.next(); 로 입력받기
 
-			switch (sNum) {
+			switch (sNum) {  // switch문을 통해 선택항목 입력 번호 삽입
 
-			case "1": {
+			case "1": {  // 문자입력이기 때문에 1대신 "1"로 설정
 				List<PersonVo> personList = personDao.personSelect("");
 				System.out.println("<1.리스트>");
 				for (int i = 0; i < personList.size(); i++) {
@@ -81,8 +84,8 @@ public class MainApp {
 				System.out.println("[어떤 항목을 수정하시겠습니까?]");
 				System.out.println(" 1.이름    2.개인번호    3.회사번호 ");
 				System.out.print(">번호: ");
-				String updateNum = scanner.nextLine();
-			
+				String updateNum = scanner.next();
+				scanner.nextLine();
 				switch (updateNum) {
 				case "1": {
 					System.out.println("[새 이름을 입력하십시오.]");
